@@ -1,0 +1,184 @@
+title: Localization Settings
+icon: language
+num: 5
+
+# Status
+status: unlisted
+
+# Layout
+layout: sections
+
+# Sections
+sections:
+  languages:
+    type: fields
+    label: Language Configuration
+    columns: 2
+    fields:
+      defaultLanguage:
+        label: Default Language
+        type: select
+        options:
+          - ar
+          - fr
+          - en
+        default: ar
+        width: 1/2
+      enabledLanguages:
+        label: Enabled Languages
+        type: multiselect
+        options:
+          - ar
+          - fr
+          - en
+        default:
+          - ar
+          - fr
+        width: 1/2
+      languageSwitcher:
+        label: Show Language Switcher
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: true
+        width: 1/2
+      autoDetectLanguage:
+        label: Auto-detect Visitor Language
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: false
+        width: 1/2
+
+  rtl:
+    type: fields
+    label: RTL/LTR Settings
+    columns: 2
+    fields:
+      rtlLanguages:
+        label: RTL Languages
+        type: multiselect
+        options:
+          - ar
+          - fa
+          - he
+        default:
+          - ar
+        width: 1/2
+      forceRtl:
+        label: Force RTL for All Languages
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: false
+        width: 1/2
+
+  translations:
+    type: fields
+    label: Custom Translations
+    fields:
+      customTranslations:
+        label: Custom Translations
+        type: structure
+        columns:
+          key:
+            width: 30%
+          ar:
+            width: 25%
+          fr:
+            width: 25%
+          en:
+            width: 20%
+        fields:
+          key:
+            label: Translation Key
+            type: text
+            required: true
+          ar:
+            label: Arabic
+            type: text
+          fr:
+            label: French
+            type: text
+          en:
+            label: English
+            type: text
+
+  formats:
+    type: fields
+    label: Date & Number Formats
+    columns: 2
+    fields:
+      dateFormat:
+        label: Date Format
+        type: select
+        options:
+          - "DD/MM/YYYY"
+          - "MM/DD/YYYY"
+          - "YYYY-MM-DD"
+          - "DD MMM YYYY"
+        default: "DD/MM/YYYY"
+        width: 1/2
+      timeFormat:
+        label: Time Format
+        type: select
+        options:
+          - "HH:mm"
+          - "hh:mm A"
+          - "HH:mm:ss"
+        default: "HH:mm"
+        width: 1/2
+      firstDayOfWeek:
+        label: First Day of Week
+        type: select
+        options:
+          - "saturday"
+          - "sunday"
+          - "monday"
+        default: "saturday"
+        width: 1/2
+      timezone:
+        label: Timezone
+        type: select
+        options:
+          - "Africa/Algiers"
+          - "Europe/Paris"
+          - "UTC"
+        default: "Africa/Algiers"
+        width: 1/2
+
+tabs:
+  languages:
+    icon: flag
+    label: Languages
+    columns:
+      - width: 1/1
+        sections:
+          languages: languages
+          rtl: rtl
+
+  translations:
+    icon: translate
+    label: Translations
+    columns:
+      - width: 1/1
+        sections:
+          translations: translations
+
+  formats:
+    icon: calendar
+    label: Formats
+    columns:
+      - width: 1/1
+        sections:
+          formats: formats
+
+# Options
+options:
+  duplicate: false
+  delete: false
+  changeSlug: false
+  changeStatus: false

@@ -1,0 +1,278 @@
+title: Shipping Settings
+icon: truck
+num: 3
+
+# Status
+status: unlisted
+
+# Layout
+layout: sections
+
+# Sections
+sections:
+  generalShipping:
+    type: fields
+    label: General Shipping Settings
+    columns: 2
+    fields:
+      enableShipping:
+        label: Enable Shipping
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: true
+        width: 1/2
+      freeShippingEnabled:
+        label: Enable Free Shipping
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: true
+        width: 1/2
+      freeShippingThreshold:
+        label: Free Shipping Threshold (DZD)
+        type: number
+        min: 0
+        step: 100
+        default: 5000
+        when:
+          freeShippingEnabled: true
+        width: 1/2
+      defaultShippingCost:
+        label: Default Shipping Cost
+        type: number
+        min: 0
+        step: 100
+        default: 500
+        width: 1/2
+      shippingCalculation:
+        label: Shipping Calculation
+        type: select
+        options:
+          - flat_rate
+          - per_wilaya
+          - per_weight
+          - per_price
+        default: per_wilaya
+        width: 1/2
+
+  wilayas:
+    type: fields
+    label: Wilayas Configuration (58 States)
+    fields:
+      wilayas:
+        label: Wilayas & Shipping Prices
+        type: structure
+        columns:
+          id:
+            width: 15%
+          name_ar:
+            width: 25%
+          name_fr:
+            width: 25%
+          home_delivery:
+            width: 20%
+          office_pickup:
+            width: 15%
+        fields:
+          id:
+            label: Wilaya ID
+            type: number
+            min: 1
+            max: 58
+            required: true
+          name_ar:
+            label: Name (Arabic)
+            type: text
+            required: true
+          name_fr:
+            label: Name (French)
+            type: text
+            required: true
+          home_delivery:
+            label: Home Delivery Price
+            type: number
+            min: 0
+            step: 50
+            default: 500
+          office_pickup:
+            label: Office Pickup Price
+            type: number
+            min: 0
+            step: 50
+            default: 400
+          communes:
+            label: Communes
+            type: textarea
+            help: Comma-separated list of communes
+
+  deliveryOptions:
+    type: fields
+    label: Delivery Options
+    columns: 2
+    fields:
+      homeDeliveryEnabled:
+        label: Home Delivery
+        type: toggle
+        text:
+          - "Disabled"
+          - "Enabled"
+        default: true
+        width: 1/2
+      officePickupEnabled:
+        label: Office Pickup
+        type: toggle
+        text:
+          - "Disabled"
+          - "Enabled"
+        default: true
+        width: 1/2
+      expressDeliveryEnabled:
+        label: Express Delivery
+        type: toggle
+        text:
+          - "Disabled"
+          - "Enabled"
+        default: false
+        width: 1/2
+      expressDeliveryPrice:
+        label: Express Delivery Surcharge
+        type: number
+        min: 0
+        step: 100
+        default: 300
+        when:
+          expressDeliveryEnabled: true
+        width: 1/2
+      sameDay:
+        label: Same Day Delivery
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: false
+        width: 1/2
+      scheduledDelivery:
+        label: Scheduled Delivery
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: false
+        width: 1/2
+
+  restrictions:
+    type: fields
+    label: Shipping Restrictions
+    columns: 2
+    fields:
+      restrictedWilayas:
+        label: Restricted Wilayas
+        type: multiselect
+        options: query
+        query: page.shipping.wilayas.value
+        width: 1/2
+      restrictedProducts:
+        label: Restricted Products
+        type: pages
+        templates:
+          - product
+        width: 1/2
+      heavyItemSurcharge:
+        label: Heavy Item Surcharge (>5kg)
+        type: number
+        min: 0
+        step: 100
+        default: 200
+        width: 1/2
+      oversizedSurcharge:
+        label: Oversized Surcharge
+        type: number
+        min: 0
+        step: 100
+        default: 500
+        width: 1/2
+
+  partners:
+    type: fields
+    label: Shipping Partners
+    columns: 2
+    fields:
+      partners:
+        label: Active Partners
+        type: structure
+        columns:
+          name:
+            width: 40%
+          enabled:
+            width: 20%
+          tracking_url:
+            width: 40%
+        fields:
+          name:
+            label: Partner Name
+            type: text
+          enabled:
+            label: Enabled
+            type: toggle
+            text:
+              - "No"
+              - "Yes"
+          logo:
+            label: Logo
+            type: files
+            max: 1
+            accepts: image/*
+          trackingUrl:
+            label: Tracking URL Pattern
+            type: text
+            placeholder: "https://tracking.com/?id={TRACKING_NUMBER}"
+          phone:
+            label: Contact Phone
+            type: tel
+          email:
+            label: Contact Email
+            type: email
+
+tabs:
+  general:
+    icon: settings
+    label: General
+    columns:
+      - width: 1/1
+        sections:
+          generalShipping: generalShipping
+
+  wilayas:
+    icon: map
+    label: Wilayas
+    columns:
+      - width: 1/1
+        sections:
+          wilayas: wilayas
+
+  options:
+    icon: check-square
+    label: Options
+    columns:
+      - width: 1/1
+        sections:
+          deliveryOptions: deliveryOptions
+          restrictions: restrictions
+
+  partners:
+    icon: handshake
+    label: Partners
+    columns:
+      - width: 1/1
+        sections:
+          partners: partners
+
+# Options
+options:
+  duplicate: false
+  delete: false
+  changeSlug: false
+  changeStatus: false

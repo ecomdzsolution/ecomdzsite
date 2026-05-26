@@ -1,0 +1,216 @@
+title: Funnel
+icon: chart-line
+num: date
+
+# Status
+status: draft
+
+# Layout
+layout: sections
+
+# Sections
+sections:
+  funnelInfo:
+    type: fields
+    label: Funnel Information
+    fields:
+      title:
+        label: Funnel Name
+        type: text
+        required: true
+      description:
+        label: Description
+        type: textarea
+        help: Internal description for team reference
+
+  funnelSettings:
+    type: fields
+    label: Funnel Settings
+    columns: 2
+    fields:
+      funnelType:
+        label: Funnel Type
+        type: select
+        options:
+          - product-launch
+          - lead-magnet
+          - webinar
+          - tripwire
+          - upsell
+          - downsell
+        default: product-launch
+        width: 1/2
+      goal:
+        label: Primary Goal
+        type: select
+        options:
+          - sale
+          - lead
+          - appointment
+          - download
+        default: sale
+        width: 1/2
+      currency:
+        label: Currency
+        type: text
+        default: DZD
+        width: 1/3
+      targetConversion:
+        label: Target Conversion (%)
+        type: number
+        min: 0
+        max: 100
+        step: 0.1
+        width: 1/3
+      budget:
+        label: Ad Budget
+        type: number
+        min: 0
+        width: 1/3
+
+  steps:
+    type: fields
+    label: Funnel Steps
+    fields:
+      steps:
+        label: Funnel Steps
+        type: structure
+        columns:
+          name:
+            width: 30%
+          type:
+            width: 25%
+          page:
+            width: 45%
+        fields:
+          name:
+            label: Step Name
+            type: text
+          type:
+            label: Step Type
+            type: select
+            options:
+              - landing
+              - checkout
+              - upsell
+              - downsell
+              - thankyou
+              - webinar
+          page:
+            label: Linked Page
+            type: pages
+            templates:
+              - landing
+              - product
+              - checkout
+
+  tracking:
+    type: fields
+    label: Tracking & Analytics
+    columns: 2
+    fields:
+      utmSource:
+        label: UTM Source
+        type: text
+        default: funnel
+        width: 1/2
+      utmMedium:
+        label: UTM Medium
+        type: text
+        default: cpc
+        width: 1/2
+      utmCampaign:
+        label: UTM Campaign
+        type: text
+        width: 1/2
+      facebookPixelId:
+        label: Facebook Pixel ID
+        type: text
+        width: 1/2
+      tiktokPixelId:
+        label: TikTok Pixel ID
+        type: text
+        width: 1/2
+      googleTagId:
+        label: Google Tag ID
+        type: text
+        width: 1/2
+      customEvents:
+        label: Custom Events
+        type: textarea
+        help: One event per line
+        width: 1/1
+
+  abTesting:
+    type: fields
+    label: A/B Testing
+    columns: 2
+    fields:
+      enableAbTest:
+        label: Enable A/B Test
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        width: 1/2
+      variantB:
+        label: Variant B Page
+        type: pages
+        when:
+          enableAbTest: true
+        width: 1/2
+      trafficSplit:
+        label: Traffic Split (%)
+        type: number
+        min: 0
+        max: 100
+        default: 50
+        when:
+          enableAbTest: true
+        width: 1/2
+      winnerCriteria:
+        label: Winner Criteria
+        type: select
+        options:
+          - conversion_rate
+          - revenue
+          - time_on_page
+        when:
+          enableAbTest: true
+        width: 1/2
+
+tabs:
+  overview:
+    icon: info
+    label: Overview
+    columns:
+      - width: 1/2
+        sections:
+          funnelInfo: funnelInfo
+      - width: 1/2
+        sections:
+          funnelSettings: funnelSettings
+
+  steps:
+    icon: sitemap
+    label: Steps
+    columns:
+      - width: 1/1
+        sections:
+          steps: steps
+
+  tracking:
+    icon: chart-bar
+    label: Tracking
+    columns:
+      - width: 1/1
+        sections:
+          tracking: tracking
+          abTesting: abTesting
+
+# Options
+options:
+  duplicate: true
+  delete: true
+  changeSlug: true
+  changeStatus: true

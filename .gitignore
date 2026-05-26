@@ -1,0 +1,47 @@
+```
+# Dependencies
+kirby/
+vendor/
+node_modules/
+
+# Build artifacts
+dist/
+build/
+*.css.map
+*.js.map
+
+# Environment specific
+.env
+.env.local
+.env.*
+
+# Cache directories
+.cache/
+.kirby/
+site/cache/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+
+# Coverage reports
+coverage/
+htmlcov/
+.coverage
+
+# Local configuration overrides
+site/config/config.local.php
+```
