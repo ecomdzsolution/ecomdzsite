@@ -1,0 +1,101 @@
+title: Home
+icon: home
+num: 1
+
+# Status
+status: listed
+
+# Layout
+layout: sections
+
+# Sections
+sections:
+  hero:
+    type: fields
+    fields:
+      heroTitle:
+        label: Hero Title
+        type: text
+      heroSubtitle:
+        label: Hero Subtitle
+        type: textarea
+      heroImage:
+        label: Hero Image
+        type: files
+        max: 1
+        accepts: image/*
+      heroCtaText:
+        label: CTA Text
+        type: text
+      heroCtaLink:
+        label: CTA Link
+        type: page
+
+  featuredProducts:
+    type: pages
+    headline: Featured Products
+    create:
+      - product
+    templates:
+      - product
+    status: all
+    limit: 8
+
+  contentBlocks:
+    type: blocks
+    label: Content Blocks
+    field: contentBlocks
+    allowed:
+      - text
+      - image
+      - gallery
+      - video
+      - quote
+      - product-grid
+      - category-grid
+      - testimonial
+      - faq
+      - custom-html
+
+  seo:
+    type: fields
+    fields:
+      metaTitle:
+        label: Meta Title
+        type: text
+      metaDescription:
+        label: Meta Description
+        type: textarea
+      ogImage:
+        label: OpenGraph Image
+        type: files
+        max: 1
+        accepts: image/*
+
+tabs:
+  content:
+    icon: text
+    label: Content
+    columns:
+      - width: 2/3
+        sections:
+          contentBlocks: contentBlocks
+      - width: 1/3
+        sections:
+          featuredProducts: featuredProducts
+
+  design:
+    icon: paintbrush
+    label: Design
+    columns:
+      - width: 1/1
+        sections:
+          hero: hero
+
+  seo:
+    icon: search
+    label: SEO
+    columns:
+      - width: 1/1
+        sections:
+          seo: seo

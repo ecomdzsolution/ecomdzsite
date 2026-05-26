@@ -1,0 +1,331 @@
+title: Integrations Settings
+icon: plug
+num: 4
+
+# Status
+status: unlisted
+
+# Layout
+layout: sections
+
+# Sections
+sections:
+  google:
+    type: fields
+    label: Google Services
+    columns: 2
+    fields:
+      googleTagId:
+        label: Google Tag ID (GTM-XXXX)
+        type: text
+        placeholder: GTM-XXXXXXX
+        width: 1/2
+      googleAnalyticsId:
+        label: Google Analytics 4 ID
+        type: text
+        placeholder: G-XXXXXXXXXX
+        width: 1/2
+      googleAdsId:
+        label: Google Ads Conversion ID
+        type: text
+        width: 1/2
+      googleMerchantId:
+        label: Google Merchant Center ID
+        type: text
+        width: 1/2
+      googleApiKey:
+        label: Google API Key
+        type: text
+        width: 1/2
+      enableGoogleSheetSync:
+        label: Enable Google Sheets Sync
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        width: 1/2
+      googleSheetId:
+        label: Google Sheet ID
+        type: text
+        when:
+          enableGoogleSheetSync: true
+        width: 1/2
+
+  facebook:
+    type: fields
+    label: Facebook / Meta
+    columns: 2
+    fields:
+      facebookPixelId:
+        label: Facebook Pixel ID
+        type: text
+        width: 1/2
+      facebookAccessToken:
+        label: Facebook Access Token
+        type: text
+        width: 1/2
+      enableCapi:
+        label: Enable Conversions API
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: true
+        width: 1/2
+      capiAccessToken:
+        label: CAPI Access Token
+        type: text
+        when:
+          enableCapi: true
+        width: 1/2
+      testEventsCode:
+        label: Test Events Code
+        type: text
+        width: 1/2
+      advancedMatching:
+        label: Advanced Matching
+        type: multiselect
+        options:
+          - email
+          - phone
+          - firstName
+          - lastName
+          - city
+          - zip
+        width: 1/2
+
+  tiktok:
+    type: fields
+    label: TikTok
+    columns: 2
+    fields:
+      tiktokPixelId:
+        label: TikTok Pixel ID
+        type: text
+        width: 1/2
+      tiktokAccessToken:
+        label: TikTok Access Token
+        type: text
+        width: 1/2
+      enableTikTokEvents:
+        label: Enable TikTok Events
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: true
+        width: 1/2
+      tiktokTestMode:
+        label: Test Mode
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        width: 1/2
+
+  snapchat:
+    type: fields
+    label: Snapchat
+    columns: 2
+    fields:
+      snapchatPixelId:
+        label: Snapchat Pixel ID
+        type: text
+        width: 1/2
+      snapchatAccessToken:
+        label: Snapchat Access Token
+        type: text
+        width: 1/2
+      enableSnapchatEvents:
+        label: Enable Snapchat Events
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: false
+        width: 1/2
+
+  webhooks:
+    type: fields
+    label: Webhooks
+    fields:
+      webhooks:
+        label: Webhook Endpoints
+        type: structure
+        columns:
+          name:
+            width: 30%
+          url:
+            width: 50%
+          events:
+            width: 20%
+        fields:
+          name:
+            label: Webhook Name
+            type: text
+          url:
+            label: Webhook URL
+            type: url
+            required: true
+          events:
+            label: Trigger Events
+            type: multiselect
+            options:
+              - order.created
+              - order.updated
+              - order.completed
+              - order.cancelled
+              - product.created
+              - product.updated
+              - customer.created
+          method:
+            label: HTTP Method
+            type: select
+            options:
+              - POST
+              - PUT
+              - GET
+            default: POST
+          headers:
+            label: Custom Headers
+            type: textarea
+            help: JSON format: {"Authorization": "Bearer token"}
+          retryEnabled:
+            label: Enable Retry
+            type: toggle
+            text:
+              - "No"
+              - "Yes"
+            default: true
+          maxRetries:
+            label: Max Retries
+            type: number
+            min: 0
+            max: 10
+            default: 3
+            when:
+              retryEnabled: true
+
+  crm:
+    type: fields
+    label: CRM Integration
+    columns: 2
+    fields:
+      crmProvider:
+        label: CRM Provider
+        type: select
+        options:
+          - none
+          - hubspot
+          - salesforce
+          - zoho
+          - pipedrive
+          - custom
+        default: none
+        width: 1/2
+      crmApiKey:
+        label: CRM API Key
+        type: text
+        when:
+          crmProvider: "!none"
+        width: 1/2
+      crmEndpoint:
+        label: CRM Endpoint
+        type: url
+        when:
+          crmProvider: custom
+        width: 1/2
+      syncContacts:
+        label: Sync Contacts
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        when:
+          crmProvider: "!none"
+        width: 1/2
+      syncOrders:
+        label: Sync Orders
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        when:
+          crmProvider: "!none"
+        width: 1/2
+
+  email:
+    type: fields
+    label: Email Marketing
+    columns: 2
+    fields:
+      emailProvider:
+        label: Email Provider
+        type: select
+        options:
+          - none
+          - mailchimp
+          - sendinblue
+          - activecampaign
+          - klaviyo
+          - custom
+        default: none
+        width: 1/2
+      emailApiKey:
+        label: API Key
+        type: text
+        when:
+          emailProvider: "!none"
+        width: 1/2
+      emailListId:
+        label: List ID
+        type: text
+        when:
+          emailProvider: "!none"
+        width: 1/2
+      doubleOptIn:
+        label: Double Opt-In
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: true
+        width: 1/2
+
+tabs:
+  google:
+    icon: google
+    label: Google
+    columns:
+      - width: 1/1
+        sections:
+          google: google
+
+  social:
+    icon: share-alt
+    label: Social Media
+    columns:
+      - width: 1/2
+        sections:
+          facebook: facebook
+      - width: 1/2
+        sections:
+          tiktok: tiktok
+          snapchat: snapchat
+
+  automation:
+    icon: bolt
+    label: Automation
+    columns:
+      - width: 1/1
+        sections:
+          webhooks: webhooks
+          crm: crm
+          email: email
+
+# Options
+options:
+  duplicate: false
+  delete: false
+  changeSlug: false
+  changeStatus: false

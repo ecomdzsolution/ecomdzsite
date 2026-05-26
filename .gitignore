@@ -1,0 +1,47 @@
+```
+# Environment variables
+.env
+
+# Kirby specific
+site/cache/
+site/sessions/
+kirby/
+
+# Dependencies
+vendor/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build artifacts
+dist/
+build/
+target/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Node.js
+node_modules/
+
+# Temporary files
+*.tmp
+*.temp
+```

@@ -1,0 +1,309 @@
+title: Product
+icon: box
+num: date
+
+# Status
+status: draft
+
+# Layout
+layout: sections
+
+# Sections
+sections:
+  productInfo:
+    type: fields
+    label: Product Information
+    fields:
+      title:
+        label: Title
+        type: text
+        required: true
+        translate: true
+      subtitle:
+        label: Subtitle
+        type: text
+        translate: true
+      sku:
+        label: SKU
+        type: text
+        required: true
+      barcode:
+        label: Barcode (EAN/UPC)
+        type: text
+
+  media:
+    type: fields
+    label: Media
+    fields:
+      images:
+        label: Product Images
+        type: files
+        multiple: true
+        accepts: image/*
+        uploads: products
+      videoUrl:
+        label: Product Video URL
+        type: url
+        placeholder: https://youtube.com/...
+
+  pricing:
+    type: fields
+    label: Pricing
+    columns: 2
+    fields:
+      price:
+        label: Price (DZD)
+        type: number
+        min: 0
+        step: 100
+        required: true
+        width: 1/2
+      compareAtPrice:
+        label: Compare at Price
+        type: number
+        min: 0
+        step: 100
+        width: 1/2
+      costPrice:
+        label: Cost Price
+        type: number
+        min: 0
+        step: 100
+        width: 1/2
+      taxRate:
+        label: Tax Rate (%)
+        type: number
+        min: 0
+        max: 100
+        step: 1
+        default: 0
+        width: 1/2
+
+  variants:
+    type: fields
+    label: Variants
+    fields:
+      hasVariants:
+        label: Has Variants
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+      variantType:
+        label: Variant Type
+        type: select
+        options:
+          - color
+          - size
+          - material
+          - custom
+        when:
+          hasVariants: true
+      variants:
+        label: Variants List
+        type: structure
+        when:
+          hasVariants: true
+        columns:
+          name:
+            width: 50%
+          price:
+            width: 25%
+          stock:
+            width: 25%
+        fields:
+          name:
+            label: Name
+            type: text
+          price:
+            label: Price Adjustment
+            type: number
+            help: Positive or negative adjustment
+          stock:
+            label: Stock Quantity
+            type: number
+            min: 0
+
+  inventory:
+    type: fields
+    label: Inventory
+    columns: 2
+    fields:
+      stock:
+        label: Stock Quantity
+        type: number
+        min: 0
+        default: 0
+        width: 1/2
+      trackStock:
+        label: Track Stock
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        width: 1/2
+      lowStockThreshold:
+        label: Low Stock Threshold
+        type: number
+        min: 0
+        default: 5
+        when:
+          trackStock: true
+        width: 1/2
+      allowBackorder:
+        label: Allow Backorder
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        when:
+          trackStock: true
+        width: 1/2
+
+  shipping:
+    type: fields
+    label: Shipping
+    columns: 2
+    fields:
+      weight:
+        label: Weight (kg)
+        type: number
+        min: 0
+        step: 0.1
+        width: 1/3
+      length:
+        label: Length (cm)
+        type: number
+        min: 0
+        width: 1/3
+      width:
+        label: Width (cm)
+        type: number
+        min: 0
+        width: 1/3
+      height:
+        label: Height (cm)
+        type: number
+        min: 0
+        width: 1/3
+      freeShipping:
+        label: Free Shipping
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        width: 1/3
+      shippingClass:
+        label: Shipping Class
+        type: select
+        options:
+          - standard
+          - fragile
+          - oversized
+          - express
+        width: 1/3
+
+  description:
+    type: fields
+    label: Description
+    fields:
+      shortDescription:
+        label: Short Description
+        type: textarea
+        size: small
+        translate: true
+      description:
+        label: Full Description
+        type: writer
+        translate: true
+        marks:
+          - bold
+          - italic
+          - link
+        nodes:
+          - paragraph
+          - bulletList
+          - orderedList
+          - heading
+          - image
+
+  seo:
+    type: fields
+    label: SEO
+    fields:
+      metaTitle:
+        label: Meta Title
+        type: text
+        maxlength: 60
+        translate: true
+      metaDescription:
+        label: Meta Description
+        type: textarea
+        maxlength: 160
+        translate: true
+      canonicalUrl:
+        label: Canonical URL
+        type: text
+      noindex:
+        label: No Index
+        type: toggle
+        text:
+          - "Indexable"
+          - "No Index"
+      nofollow:
+        label: No Follow
+        type: toggle
+        text:
+          - "Followable"
+          - "No Follow"
+
+tabs:
+  content:
+    icon: text
+    label: Content
+    columns:
+      - width: 1/1
+        sections:
+          productInfo: productInfo
+          media: media
+          description: description
+
+  pricing:
+    icon: tag
+    label: Pricing & Inventory
+    columns:
+      - width: 1/2
+        sections:
+          pricing: pricing
+      - width: 1/2
+        sections:
+          inventory: inventory
+          variants: variants
+
+  shipping:
+    icon: truck
+    label: Shipping
+    columns:
+      - width: 1/1
+        sections:
+          shipping: shipping
+
+  seo:
+    icon: search
+    label: SEO
+    columns:
+      - width: 1/1
+        sections:
+          seo: seo
+
+# Options
+options:
+  duplicate: true
+  delete: true
+  changeSlug: true
+  changeStatus: true
+  changeTemplate: false
+
+# Templates
+templates:
+  - product

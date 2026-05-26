@@ -1,0 +1,252 @@
+title: Store Settings
+icon: store
+num: 1
+
+# Status
+status: unlisted
+
+# Layout
+layout: sections
+
+# Sections
+sections:
+  generalInfo:
+    type: fields
+    label: General Information
+    columns: 2
+    fields:
+      storeName:
+        label: Store Name
+        type: text
+        required: true
+        translate: true
+        width: 1/2
+      storeTagline:
+        label: Store Tagline
+        type: text
+        translate: true
+        width: 1/2
+      storeLogo:
+        label: Store Logo
+        type: files
+        max: 1
+        accepts: image/*
+        width: 1/2
+      storeFavicon:
+        label: Favicon
+        type: files
+        max: 1
+        accepts: image/*
+        width: 1/2
+      storeEmail:
+        label: Store Email
+        type: email
+        required: true
+        width: 1/2
+      storePhone:
+        label: Store Phone
+        type: tel
+        width: 1/2
+      storeAddress:
+        label: Store Address
+        type: textarea
+        width: 1/2
+      socialLinks:
+        label: Social Media Links
+        type: structure
+        width: 1/2
+        columns:
+          platform:
+            width: 40%
+          url:
+            width: 60%
+        fields:
+          platform:
+            label: Platform
+            type: select
+            options:
+              - facebook
+              - instagram
+              - tiktok
+              - twitter
+              - youtube
+              - whatsapp
+          url:
+            label: URL
+            type: url
+
+  currency:
+    type: fields
+    label: Currency & Localization
+    columns: 3
+    fields:
+      currency:
+        label: Currency Code
+        type: text
+        default: DZD
+        maxlength: 3
+        width: 1/3
+      currencySymbol:
+        label: Currency Symbol
+        type: text
+        default: "د.ج"
+        width: 1/3
+      currencyPosition:
+        label: Currency Position
+        type: select
+        options:
+          - before
+          - after
+        default: after
+        width: 1/3
+      thousandSeparator:
+        label: Thousand Separator
+        type: select
+        options:
+          - ","
+          - "."
+          - " "
+          - none
+        default: " "
+        width: 1/3
+      decimalSeparator:
+        label: Decimal Separator
+        type: select
+        options:
+          - "."
+          - ","
+        default: ","
+        width: 1/3
+      decimals:
+        label: Decimals
+        type: number
+        min: 0
+        max: 3
+        default: 0
+        width: 1/3
+
+  tax:
+    type: fields
+    label: Tax Settings
+    columns: 2
+    fields:
+      enableTax:
+        label: Enable Tax
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        width: 1/2
+      defaultTaxRate:
+        label: Default Tax Rate (%)
+        type: number
+        min: 0
+        max: 100
+        step: 0.1
+        when:
+          enableTax: true
+        width: 1/2
+      taxIncluded:
+        label: Prices Include Tax
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        when:
+          enableTax: true
+        width: 1/2
+      taxExemptCategories:
+        label: Tax Exempt Categories
+        type: pages
+        when:
+          enableTax: true
+        width: 1/2
+
+  checkout:
+    type: fields
+    label: Checkout Settings
+    columns: 2
+    fields:
+      allowGuestCheckout:
+        label: Allow Guest Checkout
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: true
+        width: 1/2
+      requirePhone:
+        label: Require Phone Number
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: true
+        width: 1/2
+      requireEmail:
+        label: Require Email
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: false
+        width: 1/2
+      minimumOrderAmount:
+        label: Minimum Order Amount
+        type: number
+        min: 0
+        step: 100
+        width: 1/2
+      maximumOrderAmount:
+        label: Maximum Order Amount
+        type: number
+        min: 0
+        step: 100
+        width: 1/2
+      orderPrefix:
+        label: Order Number Prefix
+        type: text
+        default: "DZ"
+        width: 1/2
+      orderDigits:
+        label: Order Number Digits
+        type: number
+        min: 4
+        max: 10
+        default: 6
+        width: 1/2
+
+tabs:
+  general:
+    icon: info
+    label: General
+    columns:
+      - width: 1/2
+        sections:
+          generalInfo: generalInfo
+      - width: 1/2
+        sections:
+          currency: currency
+
+  tax:
+    icon: percent
+    label: Tax
+    columns:
+      - width: 1/1
+        sections:
+          tax: tax
+
+  checkout:
+    icon: shopping-cart
+    label: Checkout
+    columns:
+      - width: 1/1
+        sections:
+          checkout: checkout
+
+# Options
+options:
+  duplicate: false
+  delete: false
+  changeSlug: false
+  changeStatus: false
