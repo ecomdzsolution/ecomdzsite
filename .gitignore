@@ -1,24 +1,24 @@
-```
-# Dependencies
+# Environment variables
+.env
+.env.local
+.env.*
+
+# Kirby specific
+site/cache/
+site/sessions/
+.kirby/
 kirby/
+
+# Dependencies
 vendor/
 node_modules/
 
 # Build artifacts
 dist/
 build/
+target/
 *.css.map
 *.js.map
-
-# Environment specific
-.env
-.env.local
-.env.*
-
-# Cache directories
-.cache/
-.kirby/
-site/cache/
 
 # Logs
 *.log
@@ -27,7 +27,7 @@ site/cache/
 .DS_Store
 Thumbs.db
 
-# IDE files
+# Editor files
 .vscode/
 .idea/
 *.swp
@@ -42,6 +42,15 @@ coverage/
 htmlcov/
 .coverage
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
 # Local configuration overrides
 site/config/config.local.php
-```
