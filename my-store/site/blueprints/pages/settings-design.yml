@@ -1,0 +1,363 @@
+title: Design Settings
+icon: paintbrush
+num: 2
+
+# Status
+status: unlisted
+
+# Layout
+layout: sections
+
+# Sections
+sections:
+  colors:
+    type: fields
+    label: Color Scheme
+    columns: 2
+    fields:
+      primaryColor:
+        label: Primary Color
+        type: color
+        default: "#ff00ff"
+        width: 1/2
+      primaryHover:
+        label: Primary Hover
+        type: color
+        default: "#d600d6"
+        width: 1/2
+      secondaryColor:
+        label: Secondary Color
+        type: color
+        default: "#6366f1"
+        width: 1/2
+      successColor:
+        label: Success Color
+        type: color
+        default: "#22c55e"
+        width: 1/2
+      warningColor:
+        label: Warning Color
+        type: color
+        default: "#f59e0b"
+        width: 1/2
+      dangerColor:
+        label: Danger Color
+        type: color
+        default: "#ef4444"
+        width: 1/2
+      infoColor:
+        label: Info Color
+        type: color
+        default: "#3b82f6"
+        width: 1/2
+
+  surfaces:
+    type: fields
+    label: Surfaces (Light Mode)
+    columns: 3
+    fields:
+      surfaceLight:
+        label: Background
+        type: color
+        default: "#ffffff"
+        width: 1/3
+      surfaceLightSecondary:
+        label: Secondary Background
+        type: color
+        default: "#f9fafb"
+        width: 1/3
+      surfaceLightTertiary:
+        label: Tertiary Background
+        type: color
+        default: "#f3f4f6"
+        width: 1/3
+      borderLight:
+        label: Border Color
+        type: color
+        default: "#e5e7eb"
+        width: 1/3
+      textLightPrimary:
+        label: Primary Text
+        type: color
+        default: "#111827"
+        width: 1/3
+      textLightSecondary:
+        label: Secondary Text
+        type: color
+        default: "#6b7280"
+        width: 1/3
+
+  surfacesDark:
+    type: fields
+    label: Surfaces (Dark Mode)
+    columns: 3
+    fields:
+      surfaceDark:
+        label: Background
+        type: color
+        default: "#0d0d12"
+        width: 1/3
+      surfaceDarkSecondary:
+        label: Secondary Background
+        type: color
+        default: "#18181b"
+        width: 1/3
+      surfaceDarkTertiary:
+        label: Tertiary Background
+        type: color
+        default: "#27272a"
+        width: 1/3
+      borderDark:
+        label: Border Color
+        type: color
+        default: "#23232b"
+        width: 1/3
+      textDarkPrimary:
+        label: Primary Text
+        type: color
+        default: "#f9fafb"
+        width: 1/3
+      textDarkSecondary:
+        label: Secondary Text
+        type: color
+        default: "#9ca3af"
+        width: 1/3
+
+  typography:
+    type: fields
+    label: Typography
+    columns: 2
+    fields:
+      fontFamilyBase:
+        label: Base Font Family
+        type: select
+        options:
+          - "Inter, system-ui, sans-serif"
+          - "Poppins, sans-serif"
+          - "Cairo, sans-serif"
+          - "Tajawal, sans-serif"
+          - "Roboto, sans-serif"
+        default: "Cairo, sans-serif"
+        width: 1/2
+      fontFamilyHeadings:
+        label: Headings Font Family
+        type: select
+        options:
+          - "Inter, system-ui, sans-serif"
+          - "Poppins, sans-serif"
+          - "Cairo, sans-serif"
+          - "Tajawal, sans-serif"
+          - "Playfair Display, serif"
+        default: "Cairo, sans-serif"
+        width: 1/2
+      fontSizeBase:
+        label: Base Font Size
+        type: select
+        options:
+          - "14px"
+          - "15px"
+          - "16px"
+          - "17px"
+        default: "16px"
+        width: 1/2
+      fontWeightBase:
+        label: Base Font Weight
+        type: select
+        options:
+          - "300"
+          - "400"
+          - "500"
+        default: "400"
+        width: 1/2
+      headingScale:
+        label: Heading Scale
+        type: select
+        options:
+          - "small"
+          - "medium"
+          - "large"
+        default: "medium"
+        width: 1/2
+      lineHeightBase:
+        label: Line Height
+        type: select
+        options:
+          - "tight"
+          - "normal"
+          - "relaxed"
+          - "loose"
+        default: "normal"
+        width: 1/2
+
+  spacing:
+    type: fields
+    label: Spacing & Borders
+    columns: 3
+    fields:
+      borderRadiusSm:
+        label: Small Radius
+        type: number
+        min: 0
+        max: 20
+        default: 6
+        width: 1/3
+      borderRadiusMd:
+        label: Medium Radius
+        type: number
+        min: 0
+        max: 30
+        default: 10
+        width: 1/3
+      borderRadiusLg:
+        label: Large Radius
+        type: number
+        min: 0
+        max: 50
+        default: 18
+        width: 1/3
+      borderWidth:
+        label: Border Width
+        type: number
+        min: 0
+        max: 4
+        step: 1
+        default: 1
+        width: 1/3
+      containerMaxWidth:
+        label: Container Max Width
+        type: select
+        options:
+          - "1024px"
+          - "1280px"
+          - "1440px"
+          - "1600px"
+          - "full"
+        default: "1280px"
+        width: 1/3
+      sectionSpacing:
+        label: Section Spacing
+        type: select
+        options:
+          - "compact"
+          - "normal"
+          - "spacious"
+        default: "normal"
+        width: 1/3
+
+  shadows:
+    type: fields
+    label: Shadows
+    columns: 2
+    fields:
+      shadowSm:
+        label: Small Shadow
+        type: text
+        default: "0 1px 2px 0 rgb(0 0 0 / 0.05)"
+        width: 1/2
+      shadowMd:
+        label: Medium Shadow
+        type: text
+        default: "0 4px 6px -1px rgb(0 0 0 / 0.1)"
+        width: 1/2
+      shadowLg:
+        label: Large Shadow
+        type: text
+        default: "0 10px 15px -3px rgb(0 0 0 / 0.1)"
+        width: 1/2
+      shadowXl:
+        label: Extra Large Shadow
+        type: text
+        default: "0 20px 25px -5px rgb(0 0 0 / 0.1)"
+        width: 1/2
+      shadowSoft:
+        label: Soft Shadow
+        type: text
+        default: "0 2px 15px -3px rgba(0, 0, 0, 0.07)"
+        width: 1/2
+
+  buttons:
+    type: fields
+    label: Buttons
+    columns: 2
+    fields:
+      buttonStyle:
+        label: Button Style
+        type: select
+        options:
+          - "solid"
+          - "outline"
+          - "ghost"
+          - "soft"
+        default: "solid"
+        width: 1/2
+      buttonRadius:
+        label: Button Radius
+        type: select
+        options:
+          - "none"
+          - "sm"
+          - "md"
+          - "lg"
+          - "full"
+        default: "md"
+        width: 1/2
+      buttonSize:
+        label: Button Size
+        type: select
+        options:
+          - "sm"
+          - "md"
+          - "lg"
+        default: "md"
+        width: 1/2
+      buttonShadow:
+        label: Button Shadow
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: true
+        width: 1/2
+
+tabs:
+  colors:
+    icon: palette
+    label: Colors
+    columns:
+      - width: 1/1
+        sections:
+          colors: colors
+          surfaces: surfaces
+          surfacesDark: surfacesDark
+
+  typography:
+    icon: text
+    label: Typography
+    columns:
+      - width: 1/1
+        sections:
+          typography: typography
+
+  layout:
+    icon: layout
+    label: Layout
+    columns:
+      - width: 1/1
+        sections:
+          spacing: spacing
+          shadows: shadows
+
+  buttons:
+    icon: square-check
+    label: Buttons
+    columns:
+      - width: 1/1
+        sections:
+          buttons: buttons
+
+# Options
+options:
+  duplicate: false
+  delete: false
+  changeSlug: false
+  changeStatus: false

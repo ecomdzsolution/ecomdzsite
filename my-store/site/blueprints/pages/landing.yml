@@ -1,0 +1,296 @@
+title: Landing Page
+icon: file-code
+num: date
+
+# Status
+status: draft
+
+# Layout
+layout: sections
+
+# Sections
+sections:
+  pageInfo:
+    type: fields
+    label: Page Information
+    fields:
+      title:
+        label: Title
+        type: text
+        required: true
+        translate: true
+      subtitle:
+        label: Subtitle
+        type: text
+        translate: true
+
+  hero:
+    type: fields
+    label: Hero Section
+    columns: 2
+    fields:
+      heroHeadline:
+        label: Hero Headline
+        type: text
+        size: large
+        translate: true
+        width: 1/1
+      heroSubheadline:
+        label: Hero Subheadline
+        type: textarea
+        translate: true
+        width: 1/1
+      heroImage:
+        label: Hero Image/Video
+        type: files
+        max: 1
+        accepts: image/*, video/*
+        width: 1/2
+      heroCtaText:
+        label: CTA Button Text
+        type: text
+        default: "احصل عليه الآن"
+        translate: true
+        width: 1/2
+      heroCtaLink:
+        label: CTA Link
+        type: url
+        width: 1/2
+      showCountdown:
+        label: Show Countdown
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        width: 1/2
+      countdownDate:
+        label: Countdown End Date
+        type: date
+        time: true
+        when:
+          showCountdown: true
+        width: 1/2
+
+  contentBlocks:
+    type: blocks
+    label: Content Blocks
+    field: contentBlocks
+    allowed:
+      - text
+      - image
+      - gallery
+      - video
+      - quote
+      - features
+      - benefits
+      - comparison
+      - pricing-table
+      - testimonial
+      - faq
+      - cta
+      - form
+      - custom-html
+      - product-showcase
+      - social-proof
+      - guarantee
+
+  form:
+    type: fields
+    label: Lead Form (Optional)
+    columns: 2
+    fields:
+      enableForm:
+        label: Enable Form
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        width: 1/2
+      formTitle:
+        label: Form Title
+        type: text
+        translate: true
+        when:
+          enableForm: true
+        width: 1/2
+      formFields:
+        label: Form Fields
+        type: structure
+        when:
+          enableForm: true
+        columns:
+          name:
+            width: 40%
+          type:
+            width: 30%
+          required:
+            width: 30%
+        fields:
+          name:
+            label: Field Name
+            type: text
+          type:
+            label: Field Type
+            type: select
+            options:
+              - text
+              - email
+              - tel
+              - number
+              - select
+              - textarea
+          required:
+            label: Required
+            type: toggle
+            text:
+              - "No"
+              - "Yes"
+      formAction:
+        label: Form Action
+        type: select
+        options:
+          - email
+          - webhook
+          - google_sheets
+          - crm
+        when:
+          enableForm: true
+        width: 1/2
+      webhookUrl:
+        label: Webhook URL
+        type: url
+        when:
+          formAction: webhook
+        width: 1/2
+
+  socialProof:
+    type: fields
+    label: Social Proof
+    fields:
+      testimonials:
+        label: Testimonials
+        type: structure
+        columns:
+          name:
+            width: 30%
+          text:
+            width: 50%
+          rating:
+            width: 20%
+        fields:
+          name:
+            label: Customer Name
+            type: text
+          avatar:
+            label: Avatar
+            type: files
+            max: 1
+            accepts: image/*
+          text:
+            label: Testimonial
+            type: textarea
+          rating:
+            label: Rating
+            type: number
+            min: 1
+            max: 5
+            step: 1
+      logos:
+        label: Client Logos
+        type: files
+        multiple: true
+        accepts: image/*
+      stats:
+        label: Statistics
+        type: structure
+        columns:
+          value:
+            width: 50%
+          label:
+            width: 50%
+        fields:
+          value:
+            label: Value
+            type: text
+          label:
+            label: Label
+            type: text
+
+  seo:
+    type: fields
+    label: SEO
+    fields:
+      metaTitle:
+        label: Meta Title
+        type: text
+        maxlength: 60
+        translate: true
+      metaDescription:
+        label: Meta Description
+        type: textarea
+        maxlength: 160
+        translate: true
+      ogTitle:
+        label: OpenGraph Title
+        type: text
+        translate: true
+      ogDescription:
+        label: OpenGraph Description
+        type: textarea
+        translate: true
+      ogImage:
+        label: OpenGraph Image
+        type: files
+        max: 1
+        accepts: image/*
+      schemaType:
+        label: Schema.org Type
+        type: select
+        options:
+          - Product
+          - Service
+          - Event
+          - Article
+          - FAQPage
+
+tabs:
+  content:
+    icon: text
+    label: Content
+    columns:
+      - width: 1/1
+        sections:
+          pageInfo: pageInfo
+          hero: hero
+          contentBlocks: contentBlocks
+
+  form:
+    icon: list
+    label: Form
+    columns:
+      - width: 1/1
+        sections:
+          form: form
+
+  social:
+    icon: users
+    label: Social Proof
+    columns:
+      - width: 1/1
+        sections:
+          socialProof: socialProof
+
+  seo:
+    icon: search
+    label: SEO
+    columns:
+      - width: 1/1
+        sections:
+          seo: seo
+
+# Options
+options:
+  duplicate: true
+  delete: true
+  changeSlug: true
+  changeStatus: true

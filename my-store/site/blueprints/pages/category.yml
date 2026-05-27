@@ -1,0 +1,180 @@
+title: Category
+icon: folder
+num: default
+
+# Status
+status: listed
+
+# Layout
+layout: sections
+
+# Sections
+sections:
+  categoryInfo:
+    type: fields
+    label: Category Information
+    fields:
+      title:
+        label: Title
+        type: text
+        required: true
+        translate: true
+      description:
+        label: Description
+        type: textarea
+        translate: true
+      icon:
+        label: Icon
+        type: files
+        max: 1
+        accepts: image/*
+
+  display:
+    type: fields
+    label: Display Settings
+    columns: 2
+    fields:
+      layout:
+        label: Layout
+        type: select
+        options:
+          - grid
+          - list
+          - masonry
+        default: grid
+        width: 1/2
+      productsPerPage:
+        label: Products Per Page
+        type: number
+        min: 4
+        max: 48
+        step: 4
+        default: 12
+        width: 1/2
+      sortBy:
+        label: Default Sort
+        type: select
+        options:
+          - newest
+          - price_asc
+          - price_desc
+          - name_asc
+          - popularity
+        default: newest
+        width: 1/2
+      showFilters:
+        label: Show Filters
+        type: toggle
+        text:
+          - "No"
+          - "Yes"
+        default: true
+        width: 1/2
+
+  filters:
+    type: fields
+    label: Filters
+    fields:
+      enablePriceFilter:
+        label: Price Filter
+        type: toggle
+        text:
+          - "Hide"
+          - "Show"
+      enableBrandFilter:
+        label: Brand Filter
+        type: toggle
+        text:
+          - "Hide"
+          - "Show"
+      enableColorFilter:
+        label: Color Filter
+        type: toggle
+        text:
+          - "Hide"
+          - "Show"
+      enableSizeFilter:
+        label: Size Filter
+        type: toggle
+        text:
+          - "Hide"
+          - "Show"
+      customFilters:
+        label: Custom Filters
+        type: structure
+        columns:
+          name:
+            width: 50%
+          type:
+            width: 50%
+        fields:
+          name:
+            label: Filter Name
+            type: text
+          type:
+            label: Filter Type
+            type: select
+            options:
+              - checkbox
+              - radio
+              - select
+              - range
+
+  seo:
+    type: fields
+    label: SEO
+    fields:
+      metaTitle:
+        label: Meta Title
+        type: text
+        maxlength: 60
+        translate: true
+      metaDescription:
+        label: Meta Description
+        type: textarea
+        maxlength: 160
+        translate: true
+      ogImage:
+        label: OpenGraph Image
+        type: files
+        max: 1
+        accepts: image/*
+
+tabs:
+  content:
+    icon: text
+    label: Content
+    columns:
+      - width: 2/3
+        sections:
+          categoryInfo: categoryInfo
+      - width: 1/3
+        sections:
+          display: display
+
+  filters:
+    icon: filter
+    label: Filters
+    columns:
+      - width: 1/1
+        sections:
+          filters: filters
+
+  seo:
+    icon: search
+    label: SEO
+    columns:
+      - width: 1/1
+        sections:
+          seo: seo
+
+# Options
+options:
+  duplicate: true
+  delete: true
+  changeSlug: true
+  changeStatus: true
+
+# Children
+children:
+  template: product
